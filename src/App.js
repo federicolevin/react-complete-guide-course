@@ -3,14 +3,23 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
+  state = {
+    persons: [
+      { name: 'Fede', age: 27},
+      { name: 'Manu', age: 29},
+      { name: 'Max', age: 22}
+    ]
+  };
+
   render() {
     return (
       <div className="App">
         <h1>Hi, I'm a React App!</h1>
         <p>This is really working</p>
-        <Person name="Fede" age="27" />
-        <Person name="Manu" age="29">My Hobbies: Soccer</Person>
-        <Person name="Max" age="22" />
+        <button>Switch Name</button>
+        <Person name={ this.state.persons[0].name } age={ this.state.persons[0].age } />
+        <Person name={ this.state.persons[1].name } age={ this.state.persons[1].age }>My Hobbies: Soccer</Person>
+        <Person name={ this.state.persons[2].name } age={ this.state.persons[2].age } />
       </div>
     );
 
