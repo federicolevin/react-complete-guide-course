@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import UserInput from "./UserInput/UserInput";
+import UserOutput from "./UserOutput/UserOutput";
+
 class App extends Component {
+  state = {
+    username: 'fedelevin'
+  }
+
+  usernameChangedHandler = (event) => {
+    this.setState({
+      username: event.target.value
+    });
+  };
 
   render() {
     return (
@@ -18,6 +30,10 @@ class App extends Component {
           <li>Add two-way-binding to your input (in UserInput) to also display the starting username</li>
           <li>Add styling of your choice to your components/ elements in the components - both with inline styles and stylesheets</li>
         </ol>
+
+        <UserInput username={this.state.username} changed={this.usernameChangedHandler} />
+        <UserOutput username={this.state.username} />
+        <UserOutput username={this.state.username} />
       </div>
     );
   }
