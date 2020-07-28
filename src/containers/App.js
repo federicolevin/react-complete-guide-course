@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
-import styles from './App.css';
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -89,7 +89,7 @@ class App extends Component {
     }
 
     return (
-      <div className={styles.App}>
+      <div className="App">
         <button onClick={() => { this.setState({ showCockpit: !this.state.showCockpit })}}>Toggle Cockpit</button>
         { cockpit }
         { persons }
