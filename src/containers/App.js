@@ -72,6 +72,7 @@ class App extends Component {
 
   render() {
     console.log('[App.js] render');
+    let cockpit = null;
     let persons = null;
 
     if (this.state.showPersons) {
@@ -83,13 +84,14 @@ class App extends Component {
       );
     }
 
+    if (this.state.showCockpit) {
+      cockpit = <Cockpit showPersons={this.state.showPersons} persons={this.state.persons} clicked={this.togglePersonsHandler} title={this.props.appTitle} />;
+    }
+
     return (
       <div className={styles.App}>
         <button onClick={() => { this.setState({ showCockpit: !this.state.showCockpit })}}>Toggle Cockpit</button>
-
-        {this.state.showCockpit ? (
-          <Cockpit showPersons={this.state.showPersons} persons={this.state.persons} clicked={this.togglePersonsHandler} title={this.props.appTitle}/>
-          ) : null }
+        { cockpit }
         { persons }
       </div>
     );
