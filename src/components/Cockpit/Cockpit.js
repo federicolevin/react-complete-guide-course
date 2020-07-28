@@ -1,13 +1,13 @@
 import React, {useEffect} from "react";
-import styles from "./Cockpit.css";
+
+import styles from "./Cockpit.module.css";
 
 const Cockpit = (props) => {
   useEffect(() => {
     console.log('[Cockpit.js] useEffect');
-
     // Simulating an http request...
     setTimeout(() => {
-      alert('Saved data to cloud');
+      // alert('Saved data to cloud');
     }, 1000)
     return () => {
       console.log('[Cockpit.js] Cleanup in useEffect');
@@ -15,12 +15,12 @@ const Cockpit = (props) => {
   }, []);
 
   const assignedClasses = [];
-  let btnClass = [];
+  let btnClass = [styles.Button];
 
-  if (props.persons.length <= 2) {
+  if (props.personsLength <= 2) {
     assignedClasses.push(styles.red);
   }
-  if (props.persons.length <= 1) {
+  if (props.personsLength <= 1) {
     assignedClasses.push(styles.bold);
   }
 
@@ -39,4 +39,4 @@ const Cockpit = (props) => {
   );
 };
 
-export default Cockpit;
+export default React.memo(Cockpit);
