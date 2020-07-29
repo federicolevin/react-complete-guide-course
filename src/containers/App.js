@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
+import WithClass from '../hoc/WithClass';
 
 import './App.css';
 
@@ -90,7 +91,7 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <div className="button-wrapper"><button onClick={() => { this.setState({ showCockpit: !this.state.showCockpit })}}>Toggle Cockpit</button></div>
+        <WithClass classes="button-wrapper"><button onClick={() => { this.setState({ showCockpit: !this.state.showCockpit })}}>Toggle Cockpit</button></WithClass>
         { cockpit }
         { persons }
       </React.Fragment>
