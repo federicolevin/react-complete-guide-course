@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+import withClass from '../hoc/withClass';
+import Aux from '../hoc/Aux';
 
-import './App.css';
+import styles from './App.module.css';
 
 class App extends Component {
   constructor(props) {
@@ -90,13 +91,13 @@ class App extends Component {
     }
 
     return (
-      <React.Fragment>
-        <WithClass classes="button-wrapper"><button onClick={() => { this.setState({ showCockpit: !this.state.showCockpit })}}>Toggle Cockpit</button></WithClass>
+      <Aux>
+        <button onClick={() => { this.setState({ showCockpit: !this.state.showCockpit })}}>Toggle Cockpit</button>
         { cockpit }
         { persons }
-      </React.Fragment>
+      </Aux>
     );
   }
 }
 
-export default App;
+export default withClass(App, styles.App);
