@@ -1,5 +1,7 @@
-import React, {PureComponent} from "react";
-import Person from "./Person/Person";
+import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
+
+import Person from './Person/Person';
 
 class Persons extends PureComponent {
 
@@ -29,6 +31,12 @@ class Persons extends PureComponent {
       return <Person key={person.id} name={person.name} age={person.age} click={() => this.props.clicked(index)} changed={(event) => this.props.changed(event, person.id)}/>
     });
   }
+}
+
+Persons.propTypes = {
+  persons: PropTypes.arrayOf(PropTypes.object),
+  click: PropTypes.func,
+  changed: PropTypes.func
 }
 
 export default Persons;
