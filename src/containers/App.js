@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import withClass from '../hoc/withClass';
@@ -102,6 +103,10 @@ class App extends Component {
       </Aux>
     );
   }
+}
+
+App.propTypes = {
+  title: PropTypes.string
 }
 
 export default withClass(App, styles.App);
