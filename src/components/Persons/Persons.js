@@ -34,7 +34,11 @@ class Persons extends PureComponent {
 }
 
 Persons.propTypes = {
-  persons: PropTypes.arrayOf(PropTypes.object),
+  persons: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    age: PropTypes.number
+  })),
   click: PropTypes.func,
   changed: PropTypes.func
 }
