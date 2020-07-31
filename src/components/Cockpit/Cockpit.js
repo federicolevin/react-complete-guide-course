@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useContext} from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './Cockpit.module.css';
@@ -6,6 +6,7 @@ import AuthContext from '../../context/auth-context';
 
 const Cockpit = (props) => {
   const toggleBtnRef = useRef(null);
+  const authContext = useContext(AuthContext);
 
   useEffect(() => {
     console.log('[Cockpit.js] useEffect');
@@ -29,6 +30,11 @@ const Cockpit = (props) => {
     btnClass.push(styles.Red);
   }
 
+  let loginButton = null;
+  if (!authContext.authenticated) {
+    loginButton = <button onClick={authContext.login}>Log in</button>;
+  }
+
   return (
     <div className={styles.Cockpit}>
       <h1>{props.title}</h1>
@@ -36,9 +42,7 @@ const Cockpit = (props) => {
       <button className={btnClass.join(' ')} onClick={props.clicked} ref={toggleBtnRef}>
         Toggle Persons
       </button>
-      <AuthContext.Consumer>
-        { (context) => !context.authenticated ? <button onClick={context.login}>Log in</button> : null }
-      </AuthContext.Consumer>
+      { loginButton }
     </div>
   );
 };
