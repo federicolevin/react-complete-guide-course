@@ -4,6 +4,7 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import withClass from '../hoc/withClass';
 import Aux from '../hoc/Aux';
+import AuthContext from '../context/auth-context';
 
 import styles from './App.module.css';
 
@@ -105,7 +106,6 @@ class App extends Component {
           personsLength={this.state.persons.length}
           clicked={this.togglePersonsHandler}
           title={this.props.appTitle}
-          login={this.loginHandler}
         />
       );
     }
@@ -113,8 +113,10 @@ class App extends Component {
     return (
       <Aux>
         <button onClick={() => { this.setState({ showCockpit: !this.state.showCockpit })}}>Toggle Cockpit</button>
-        { cockpit }
-        { persons }
+        <AuthContext.Provider value={{authenticated: this.state.authenticated, login: this.loginHandler}}>
+          { cockpit }
+          { persons }
+        </AuthContext.Provider>
       </Aux>
     );
   }
