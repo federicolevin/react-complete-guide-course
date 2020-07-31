@@ -8,9 +8,7 @@ const Cockpit = (props) => {
 
   useEffect(() => {
     console.log('[Cockpit.js] useEffect');
-    setTimeout(() => {
-      toggleBtnRef.current.click();
-    }, 1000)
+    toggleBtnRef.current.click();
     return () => {
       console.log('[Cockpit.js] Cleanup in useEffect');
     };
@@ -37,6 +35,7 @@ const Cockpit = (props) => {
       <button className={btnClass.join(' ')} onClick={props.clicked} ref={toggleBtnRef}>
         Toggle Persons
       </button>
+      <button onClick={props.login}>Log in</button>
     </div>
   );
 };

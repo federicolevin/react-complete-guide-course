@@ -10,7 +10,7 @@
     font-weight: bold;
 }
 
-.Button {
+button {
     background-color: green;
     font: inherit;
     border: 1px solid blue;
@@ -19,15 +19,15 @@
     color: white;
 }
 
-.Button:hover {
+button:hover {
     background-color: lightgreen;
     color: black;
 }
 
-.Button.Red {
+button.Red {
     background-color: red;
 }
 
-.Button.Red:hover {
+button.Red:hover {
     background-color: salmon;
 }
